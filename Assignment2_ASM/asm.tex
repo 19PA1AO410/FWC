@@ -1,0 +1,205 @@
+\def\mytitle{ASSIGNMENT-1}
+\def\mykeywords{}
+\def\myauthor{ALURU  AJAY}
+\def\contact{19pa1a0410@vishnu.edu.in}
+\def\mymodule{Future Wireless Comunnication (FWC22029)}
+% #######################################
+% #### YOU DON'T NEED TO TOUCH BELOW ####
+% #######################################
+\documentclass[10pt, a4paper]{article}
+\usepackage[a4paper,outer=1.5cm,inner=1.5cm,top=1.75cm,bottom=1.5cm]{geometry}
+\twocolumn
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+%colour our links, remove weird boxes
+\usepackage[colorlinks,linkcolor={black},citecolor={blue!80!black},urlcolor={blue!80!black}]{hyperref}
+%Stop indentation on new paragraphs
+\usepackage[parfill]{parskip}
+%% Arial-like font
+\usepackage{lmodern}
+\renewcommand*\familydefault{\sfdefault}
+%Napier logo top right
+\usepackage{watermark}
+%Lorem Ipusm dolor please don't leave any in you final report ;)
+\usepackage{karnaugh-map}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumerate}
+%give us the Capital H that we all know and love
+\usepackage{float}
+%tone down the line spacing after section titles
+\usepackage{titlesec}
+%Cool maths printing
+\usepackage{amsmath}
+%PseudoCode
+\usepackage{algorithm2e}
+
+\titlespacing{\subsection}{0pt}{\parskip}{-3pt}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
+\titlespacing{\paragraph}{0pt}{\parskip}{\parskip}
+\newcommand{\figuremacro}[5]{
+    \begin{figure}[#1]
+        \centering
+        \includegraphics[width=#5\columnwidth]{#2}
+        \caption[#3]{\textbf{#3}#4}
+        \label{fig:#2}
+    \end{figure}
+}
+
+\lstset{
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+
+\thiswatermark{\centering \put(1,-110.0){\includegraphics[scale=0.075]{iith.jpg}} 
+ \put(400,-90){\includegraphics[scale=0.2]{wisig-full}} }
+
+\title{\mytitle}
+\author{\myauthor\hspace{1em}\\\contact\\IITH\hspace{0.5em}-\hspace{0.5em}\mymodule}
+\date{}
+\hypersetup{pdfauthor=\myauthor,pdftitle=\mytitle,pdfkeywords=\mykeywords}
+\sloppy
+
+% #######################################
+% ########### START FROM HERE ###########
+% #######################################
+\begin{document}
+   
+	\maketitle
+	\tableofcontents
+	\begin{abstract}
+	   The objective of this manual is to show how
+       to Verify the Boolean Expression 
+	        U’ + V = U’V’ + U’.V+U.V
+	\end{abstract}
+
+\section{COMPONENTS}
+\begin{tabularx}{0.45\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+\hline
+\textbf{Component} & \textbf{Value} & \textbf{Quantity} \\      
+\hline
+Arduino & UNO & 1 \\
+\hline
+\end{tabularx}
+\begin{center}
+    TABLE 1.0
+\end{center}
+	
+	\subsection{Arduino}
+	\hspace{10cm}
+	
+	The Arduino UNO has some ground pins, analog input pins A0-A3 and digital pins D1-D13 that can be used for both input as well as output. It also has two power pins that can generate 3.3V and 5V.In the following exercises, only the GND, 5V and digital pins will be used.
+	
+//
+
+
+\section{MATHEMATICAL PROOF}
+To prove: U’ + V = U’V’ + U’.V+U.V
+\\RHS 
+\\= UV + UV + UV
+\\= U’.(V+V’) + U.V---------------(using distributive law)
+\\=U’.(1) + U.V---------------------(using complement law)
+\\=U’+U.V---------------------------(using identity law)
+\\=(U’+U). (U’+V)----------------(using distributive law)
+\\=1.(U’+V)-------------------------(using complement law)
+\\=U’+V------------------------------(using identity law)
+\\= LHS
+
+\section{SOLUTION}
+\subsection{K-map}
+\hspace{10cm}
+A Karnaugh map (K-map) is a visual method used to simplify the algebraic expressions in Boolean functions without having to resort to complex theorems or equation manipulations.  It involves fewer steps than the algebraic minimization technique to arrive at a simplified expression. K-map simplification technique always results in minimum expression if carried out properly. Rules to follow while simplifying a K-map mention in further sections. \\ 
+\subsection{Rules to simplify K-maps}
+\hspace{10cm}
+The Karnaugh map uses the following rules for the simplification of expressions by grouping together adjacent cells containing ones
+\vspace{4pt}
+\begin{enumerate}
+\item Groups may not include any cell containing a zero.
+    \item Groups may be horizontal or vertical, but not diagonal.
+    \item Groups must contain 1, 2, 4, 8, or in general $2^n$ cells.
+    \item Each group represents a term in the Boolean expression. Larger the group, smaller and simple the term.
+    \item Each cell containing a one must be in at least one group.
+    \item Groups may overlap.
+    \item Groups may wrap around the table. The leftmost cell in a row may be grouped with the rightmost cell and the top cell in a column may be grouped with the bottom cell. 
+    \item There should be as few groups as possible, as long as this does not contradict any of the previous rules.
+    \item Don’t care “x” should also be included while grouping to make a larger possible group.
+\end{enumerate}
+\newpage
+\subsection{Karunugh Map}
+    \hspace{10cm}
+    
+      Assign X=U'+V 
+    \begin{center}
+    \begin{karnaugh-map}[2][2][1][$V$][$U$]
+        \minterms{0,1}
+        \maxterms{2,3}
+        \implicant{0}{1}
+        %\implicant{1}{1}
+        %\implicant{3}{3}
+    \end{karnaugh-map}
+        FIGURE 2.1
+        \end{center}
+    
+    Assign Y=U'V'+U'V+UV
+    \begin{center}
+    \begin{karnaugh-map}[2][2][1][$V$][$U$]
+        \minterms{0,1,3}
+        \maxterms{2}
+        \implicant{0}{0}
+        \implicant{1}{1}
+        \implicant{3}{3}
+    \end{karnaugh-map} 
+    \end{center}
+    \begin{center}
+        FIGURE 2.2
+    \end{center}
+    
+\subsection{Truth Table}
+\hspace{2cm}
+\\Above K-maps are verify using Table-0\\
+    Asumme that F=X=Y
+    
+    
+    \begin{center}
+\begin{tabularx}{0.4\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+\hline
+\textbf{A} &\textbf{B} & \textbf{F} \\
+\hline
+0 & 0 & 1 \\  
+\hline
+0 & 1 & 1 \\ 
+\hline
+1 & 0 & 0 \\
+\hline
+1 & 1 & 1 \\
+\hline
+\end{tabularx}
+\end{center}
+\begin{center}
+    TABLE 2.3
+\end{center}
+\section{HARDWARE}
+\begin{enumerate}
+\item Connect the Arduino to the computer.
+\item The code for implementing the logic of the Boolean expression in 'Assembly' language using Arduino can be downloaded by the command mentioned below\\
+\begin{lstlisting}
+https://github.com/19PA1AO410/FWC-Module-1/blob/main/Assignment_1-Assembly/Asm_Code.cpp
+\end{lstlisting}
+%\item Now select Tools $\to$ Port $\to$ /dev/ttyACM0
+\item The LED beside pin 13 light up.
+\end{enumerate}
+\section{CONCLUSION}
+The Simplified Boolen Expression is implemented on Arduino by identifying the output at pin 13 in the Arduino.Total number of combination of inputs that can be formed are 4 and the output can be verified by comparing the truthtable and the output obtained for the given inputs.
+
+\bibliographystyle{ieeetr}
+\end{document}
