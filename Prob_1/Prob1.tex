@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{enumitem}
+\usepackage{hyperref,xcolor}
+\hypersetup{
+    colorlinks,
+    urlcolor={black}  %black!50!blue
+}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\let\vec\mathbf
+
+\def\inputGnumericTable{}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{ifthen}
+
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\Problem}{\noindent \textbf{Problem: }}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\setlist[enumerate]{font=\small\bfseries}
+
+\begin{document}
+\title{\textbf{PROBABILITY}}
+\author{A L U R U A J A Y - FWC22029}
+\date{December 2022}
+
+
+\maketitle
+
+\Problem A fair coin is tossed four times, and a person wins Re 1 for each head and loses Rs. 1.50 for each tail that turns up. From the sample space calculate how many different amounts of money you can have after four tosses and the probability of having each of these amounts.\\
+
+\solution
+A fair coin is tossed 4 times and X represents the maximum number of outcomes.\\
+There are 2$^4$ elements in the sample space S,which is given by
+n(S)=16\\
+X = $\{0,1\}$ represents the head and tail.
+\begin{align}
+X(40,01) = 4\times1 + 0\times(-1.5) = 4\\
+n(A) = 1\\
+X(30,11) = 3\times1 + 1\times(-1.5) = 1.5\\
+n(B) = 4\\
+X(20,21) = 2\times1 + 2\times(-1.5) = -1\\
+n(C) = 6\\
+X(10,31) = 1\times1 + 3\times(-1.5) = -3.5\\
+n(D) = 4\\
+X(00,41) =0\times1 + 4\times(-1.5) = -6\\
+n(E) = 1
+\end{align}
+5 Probabilities for 4 tosses are\\
+\vspace{0.1cm}\\
+$p_1$ = $\frac{n(A)}{n(S)}$ = $\frac{1}{16}$ (of Winning Rs 4.00)
+\vspace{0.2cm}\\
+$p_2$ = $\frac{n(B)}{n(S)}$ = $\frac{4}{16}$ (of Winning Rs 1.50)
+\vspace{0.2cm}\\
+$p_3$ = $\frac{n(C)}{n(S)}$ = $\frac{6}{16}$ (of lossing Rs 1.00)
+\vspace{0.2cm}\\
+$p_4$ = $\frac{n(D)}{n(S)}$ = $\frac{4}{16}$ (of lossing Rs 3.50)
+\vspace{0.2cm}\\
+$p_5$ = $\frac{n(E)}{n(S)}$ = $\frac{1}{16}$ (of lossing Rs 6.00)
+\end{document}
+
+
