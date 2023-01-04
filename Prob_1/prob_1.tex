@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{enumitem}
+\usepackage{hyperref,xcolor}
+\hypersetup{
+    colorlinks,
+    urlcolor={black}  %black!50!blue
+}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\let\vec\mathbf
+
+\def\inputGnumericTable{}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{ifthen}
+\usepackage{mathtools}
+\newcommand\Myperm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\Mycomb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\Problem}{\noindent \textbf{Problem: }}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\setlist[enumerate]{font=\small\bfseries}
+
+\begin{document}
+\title{\textbf{PROBABILITY}}
+\author{A L U R U A J A Y - FWC22029}
+\date{December 2022}
+
+
+\maketitle
+
+\Problem A fair coin is tossed four times, and a person wins Re 1 for each head and loses Rs. 1.50 for each tail that turns up. From the sample space calculate how many different amounts of money you can have after four tosses and the probability of having each of these amounts.\\
+
+\solution
+In general, if the random variable X follows the binomial distribution with parameters The probability of getting exactly k successes in n independent Bernoulli trials is given by the probability mass function\\
+\begin{align}
+    p_r(X=K) = \Mycomb{k}p^k q^{n-k}
+\end{align}
+Let p be the probability of getting Head
+\vspace{0.1cm}\\
+Let q be the probability of getting Tail\\
+\begin{align}
+    p_r(X=K) = \Mycomb{k}(\frac{1}{2})^k (\frac{1}{2})^{n-k} \\  
+    Money = (k)(1)-(n-k)(1.50)
+\end{align}
+According to the problem, Where n= 4 $\And$ k = 0,1,2,3,4\\
+\begin{flushleft}
+    5 Probabilities for 4 tosses are
+\end{flushleft}
+ \begin{math}p_r(X=0)\end{math} = $\frac{1}{16}$ (of Winning Rs 4.00)
+\vspace{0.2cm}\\
+\begin{math}p_r(X=1)\end{math} = $\frac{4}{16}$ (of Winning Rs 1.50)
+\vspace{0.2cm}\\
+\begin{math}p_r(X=2)\end{math} = $\frac{6}{16}$ (of lossing Rs 1.00)
+\vspace{0.2cm}\\
+\begin{math}p_r(X=3)\end{math} = $\frac{4}{16}$ (of lossing Rs 3.50)
+\vspace{0.2cm}\\
+\begin{math}p_r(X=4)\end{math} = $\frac{1}{16}$ (of lossing Rs 6.00)
+
+\end{document}
